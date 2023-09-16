@@ -1,4 +1,8 @@
 
+using Microsoft.EntityFrameworkCore;
+using Northwind2.Data;
+using System;
+
 namespace Northwind2
 {
 	public class Program
@@ -7,7 +11,13 @@ namespace Northwind2
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
+			// Récupère la chaîne de connexion à la base dans les paramètres
+			string? connect = builder.Configuration.GetConnectionString("Northwind2Connect");
+
 			// Add services to the container.
+			// Enregistre la classe de contexte de données comme service
+			// en lui indiquant la connexion à utiliser
+			builder.Services.AddDbContext<ContexteNorthwind>(opt => opt.UseSqlServer(connect));
 
 			builder.Services.AddControllers();
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
