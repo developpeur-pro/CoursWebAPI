@@ -88,6 +88,37 @@ namespace Northwind2.Data
 				//		l => l.HasOne(typeof(Employe)).WithMany().HasForeignKey("IdEmploye"),
 				//		r => r.HasOne(typeof(Territoire)).WithMany().HasForeignKey("IdTerritoire"));
 			});
+
+			// Exemple de syntaxe pour créer un jeu de données par le code
+			/*
+			if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+			{		
+				modelBuilder.Entity<Employe>().HasData(
+				new Employe
+				{
+					Id = 11,
+					Nom = "Prégent",
+					Prenom = "Eric",
+					IdManager = 2,
+					Fonction = "Sales Representative",
+					Civilite = "Mr.",
+					DateNaissance = new DateTime(2000, 5, 20),
+					DateEmbauche = new DateTime(2023, 10, 11),
+					IdAdresse = new Guid("01fcbc07-b6ba-4f3a-ac69-891e5a41b14e")
+				},
+				new Employe
+				{
+					Id = 12,
+					Nom = "Rignaut",
+					Prenom = "Solène",
+					IdManager = 2,
+					Fonction = "Sales Representative",
+					Civilite = "Mrs.",
+					DateNaissance = new DateTime(2000, 5, 20),
+					DateEmbauche = new DateTime(2023, 10, 11),
+					IdAdresse = new Guid("01fcbc07-b6ba-4f3a-ac69-891e5a41b14e")
+				});
+			}*/
 		}
 	}
 }
