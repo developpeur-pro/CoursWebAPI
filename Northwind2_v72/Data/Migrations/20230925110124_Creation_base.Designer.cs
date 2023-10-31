@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Northwind2_v61.Data;
+using Northwind2_v72.Data;
 
 #nullable disable
 
-namespace Northwind2_v61.Data.Migrations
+namespace Northwind2_v72.Data.Migrations
 {
     [DbContext(typeof(ContexteNorthwind))]
-    partial class ContexteNorthwindModelSnapshot : ModelSnapshot
+    [Migration("20230925110124_Creation_base")]
+    partial class Creation_base
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +62,7 @@ namespace Northwind2_v61.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adresses", (string)null);
+                    b.ToTable("Adresses");
                 });
 
             modelBuilder.Entity("Northwind2.Entities.Affectation", b =>

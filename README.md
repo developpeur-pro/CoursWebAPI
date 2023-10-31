@@ -1,11 +1,32 @@
-## Code associé au cours sur les Web API ASP.Net Core avec Entity Framework Core
+## Code du cours sur les Web API ASP.Net Core avec Entity Framework Core
 
 Accès à la formation sur [Dyma.fr](https://dyma.fr/aspnetcore)
 
-- v34 : 1ère partie du modèle EF Northwind2 avec tables Employes, Adresses, Affectations, Territoires et Regions, sans les relations entre tables 
-- v36 : Ajout des relations entre les tables Employes, Adresses, Affectations, Territoires et Regions dans le modèle EF. Permet d'illustrer tous les types de relations.
-- v44 : Création d'une classe de migration pour créer la base. Ajout d'un script SQL à exécuter directement sur la base pour créer un jeu de données
-- v53 : Création du contrôleur `EmployeController` avec actions de lecture pour les employés et leur territoires d'affectation. Création du service métier `ServiceEmployes` exploité par le contrôleur.
-- v57 : Ajout d'exemples de sélection, filtrage et tri sur les actions de lecture. Ajout de propriétés de navigation et utilisation dans les actions de lecture pour récupérer des données associées.
-- v61 : Création du reste du modèle EF (tables produits, clients, commandes...) + jeu de données.  
-Ajout des actions traitant les requêtes POST sur les employés, adresses et affectations pour illustrer la validation de modèle et les formats de donénes JSON, UrlEncoded et FormData
+### v34 - Modèle EF
+1ère partie du modèle EF Northwind2 avec tables Employes, Adresses, Affectations, Territoires et Regions, sans les relations entre tables 
+
+### v36 - Modèle EF - Relations
+Ajout des relations entre les tables Employes, Adresses, Affectations, Territoires et Regions dans le modèle EF. Permet d'illustrer tous les types de relations.
+
+### v44 - Migration
+Création d'une classe de migration pour créer la base. Ajout d'un script SQL à exécuter directement sur la base pour créer un jeu de données
+
+### v53 - Requêtes GET
+Création du contrôleur `EmployeController` avec actions de lecture pour les employés et leur territoires d'affectation. Création du service métier `ServiceEmployes` exploité par le contrôleur.
+
+### v57 - Requêtes GET avec propriétés de navigation
+Ajout d'exemples de sélection, filtrage et tri sur les actions de lecture. Ajout de propriétés de navigation et utilisation dans les actions de lecture pour récupérer des données associées.
+
+### v61 - Requêtes POST - validation de modèle
+Ajout des actions traitant les requêtes POST sur les employés, adresses et affectations pour illustrer la validation de modèle et les formats de données JSON, UrlEncoded et FormData.  
+Ajout d'une entité DTO `FormEmploye` pour la récup des notes et photos sous formes de fichiers.
+
+### v63 - Requêtes POST - traitement
+Création du reste du modèle EF (tables produits, clients, commandes...) + jeu de données.  
+Ajout du contrôleur et du service Commandes pour illustrer les différents types de traitements de requêtes POST (ajout de données autonomes ou référençant des données déjà existantes dans la base)
+
+### v72 - Gestion des erreurs de base de données
+Ajout de la gestion des erreurs de base de données par une méthode d'extension sur `ControllerBase`, puis par un middleware.
+
+### v73 -  Validation
+Illustration de la validation automatique par ajout d'attributs et d'une méthode de validation sur les entités `Employe` et `Adresse`.

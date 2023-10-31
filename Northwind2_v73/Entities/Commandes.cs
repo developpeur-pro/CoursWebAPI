@@ -1,34 +1,5 @@
-﻿namespace Northwind2_v61.Entities
+﻿namespace Northwind2_v73.Entities
 {
-	public class Categorie
-	{
-		public Guid Id { get; set; }
-		public string Nom { get; set; } = "";
-		public string? Description { get; set; }
-	}
-
-	public class Fournisseur
-	{
-		public int Id { get; set; }
-		public Guid IdAdresse { get; set; }
-		public string NomSociete { get; set; } = "";
-		public string? NomContact { get; set; }
-		public string? FonctionContact { get; set; }
-		public string? UrlSiteWeb { get; set; }
-	}
-	
-	public class Produit
-	{
-		public int Id { get; set; }
-		public Guid IdCategorie { get; set; }
-		public int IdFournisseur { get; set; }
-		public string Nom { get; set; } = "";
-		public decimal	PU { get; set; }
-		public short UnitesEnStock { get; set; }
-		public short NiveauReappro { get; set; }
-		public bool Arrete { get; set; }
-	}
-
 	public class Client
 	{
 		public string Id { get; set; } = "";
@@ -36,6 +7,9 @@
 		public string NomSociete { get; set; } = "";
 		public string? NomContact { get; set; }
 		public string? FonctionContact { get; set; }
+
+		public virtual Adresse Adresse { get; set; } = null!;
+		public virtual List<Commande> Commandes { get; set; } = new();
 	}
 
 	public class Livreur
@@ -56,6 +30,12 @@
 		public DateTime? DateLivMaxi { get; set; }
 		public DateTime? DateLivraison { get; set; }
 		public decimal? FraisLivraison { get; set; }
+
+		// Propriétés de navigation
+		public virtual List<LigneCommande> Lignes { get; set; } = new();
+		public virtual Employe Employe { get; set; } = new();
+		public virtual Adresse Adresse { get; set; } = new();
+		public virtual Livreur Livreur { get; set; } = new();
 	}
 
 	public class LigneCommande
@@ -65,5 +45,7 @@
 		public decimal PU { get; set; }
 		public short Quantite { get; set; }
 		public float TauxReduc { get; set; }
+
+		public virtual Produit Produit { get; set; } = new();
 	}
 }

@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Northwind2_v61.Entities;
-using Northwind2_v61.Services;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Northwind2_v73.Data;
+using Northwind2_v73.Entities;
+using Northwind2_v73.Services;
+using System.Data;
 
-namespace Northwind2_v61.Controllers
+namespace Northwind2_v73.Controllers
 {
 
 	[Route("api/[controller]")]
@@ -67,12 +70,19 @@ namespace Northwind2_v61.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Employe>> PostEmployé(Employe emp)
 		{
-			// Enregistre l’employé dans la base et le récupère avec son Id généré automatiquement
-			Employe res = await _serviceEmp.AjouterEmployé(emp);
+			try
+			{
+				// Enregistre l’employé dans la base et le récupère avec son Id généré automatiquement
+				Employe res = await _serviceEmp.AjouterEmployé(emp);
 
-			// Renvoie une réponse de code 201 avec l'en-tête 
-			// "location: <url d'accès à l’employé>" et un corps contenant l’employé
-			return CreatedAtAction(nameof(GetEmployé), new { id = res.Id }, res);
+				// Renvoie une réponse de code 201 avec l'en-tête 
+				// "location: <url d'accès à l’employé>" et un corps contenant l’employé
+				return CreatedAtAction(nameof(GetEmployé), new { id = res.Id }, res);
+			}
+			catch (DbUpdateException e)
+			{
+				return this.CustomResponseForError(e);
+			}
 		}
 
 		// POST: api/Affectations

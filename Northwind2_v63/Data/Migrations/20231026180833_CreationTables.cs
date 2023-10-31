@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Northwind2_v61.Data.Migrations
+namespace Northwind2_v63.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AjoutTables : Migration
+    public partial class CreationTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

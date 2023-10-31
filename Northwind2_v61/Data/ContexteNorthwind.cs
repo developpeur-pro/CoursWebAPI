@@ -16,17 +16,8 @@ public class ContexteNorthwind : DbContext
 	public virtual DbSet<Territoire> Territoires { get; set; }
 	public virtual DbSet<Affectation> Affectations { get; set; }
 
-	public virtual DbSet<Categorie> Categories { get; set; }
-	public virtual DbSet<Produit> Produits { get; set; }
-	public virtual DbSet<Fournisseur> Fournisseurs { get; set; }
-	public virtual DbSet<Client> Clients { get; set; }
-	public virtual DbSet<Livreur> Livreurs { get; set; }
-	public virtual DbSet<Commande> Commandes { get; set; }
-	public virtual DbSet<LigneCommande> LignesCommandes { get; set; }
-
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		#region Employés, adresses, territoires
 		modelBuilder.Entity<Adresse>(entity =>
 		{
 			entity.HasKey(e => e.Id);
@@ -96,108 +87,5 @@ public class ContexteNorthwind : DbContext
 				l => l.HasOne<Employe>().WithMany().HasForeignKey(a => a.IdEmploye),
 				r => r.HasOne<Territoire>().WithMany().HasForeignKey(a => a.IdTerritoire));
 		});
-		#endregion
-
-		#region Clients, produits, fournisseurs, commandes
-		modelBuilder.Entity<Categorie>(entity =>
-		{
-			entity.HasKey(e => e.Id);
-
-			entity.Property(e => e.Id).ValueGeneratedNever();
-			entity.Property(e => e.Nom).HasMaxLength(40);
-			entity.Property(e => e.Description).HasMaxLength(1000);
-		});
-
-		modelBuilder.Entity<Produit>(entity =>
-		{
-			entity.HasKey(e => e.Id);
-
-			entity.Property(e => e.Nom).HasMaxLength(40);
-			entity.Property(e => e.PU).HasColumnType("decimal(8,2)");
-			entity.Property(e => e.Arrete).HasDefaultValue(false);
-
-			entity.HasOne<Categorie>().WithMany()
-					.HasForeignKey(p => p.IdCategorie)
-					.OnDelete(DeleteBehavior.NoAction);
-
-			entity.HasOne<Fournisseur>().WithMany()
-					.HasForeignKey(p => p.IdFournisseur)
-					.OnDelete(DeleteBehavior.NoAction);
-		});
-
-		modelBuilder.Entity<Client>(entity =>
-		{
-			entity.HasKey(e => e.Id);
-
-			entity.Property(e => e.Id).HasMaxLength(20).IsUnicode(false);
-			entity.Property(e => e.NomSociete).HasMaxLength(100);
-			entity.Property(e => e.NomContact).HasMaxLength(100);
-			entity.Property(e => e.FonctionContact).HasMaxLength(100);
-
-			entity.HasOne<Adresse>().WithMany()
-					.HasForeignKey(c => c.IdAdresse)
-					.OnDelete(DeleteBehavior.NoAction);
-		});
-
-		modelBuilder.Entity<Fournisseur>(entity =>
-		{
-			entity.HasKey(e => e.Id);
-
-			entity.Property(e => e.NomSociete).HasMaxLength(100);
-			entity.Property(e => e.NomContact).HasMaxLength(100);
-			entity.Property(e => e.FonctionContact).HasMaxLength(100);
-			entity.Property(e => e.UrlSiteWeb).HasMaxLength(100);
-
-			entity.HasOne<Adresse>().WithMany()
-					.HasForeignKey(f => f.IdAdresse)
-					.OnDelete(DeleteBehavior.NoAction);
-		});
-
-		modelBuilder.Entity<Livreur>(entity =>
-		{
-			entity.HasKey(e => e.Id);
-
-			entity.Property(e => e.NomSociete).HasMaxLength(40);
-			entity.Property(e => e.Telephone).HasMaxLength(20);
-		});
-
-		modelBuilder.Entity<Commande>(entity =>
-		{
-			entity.HasKey(e => e.Id);
-
-			entity.Property(e => e.FraisLivraison).HasColumnType("decimal(6,2)");
-
-			entity.HasOne<Livreur>().WithMany()
-					.HasForeignKey(c => c.IdLivreur)
-					.OnDelete(DeleteBehavior.NoAction);
-
-			entity.HasOne<Adresse>().WithMany()
-					.HasForeignKey(c => c.IdAdresse)
-					.OnDelete(DeleteBehavior.NoAction);
-
-			entity.HasOne<Client>().WithMany()
-					.HasForeignKey(c => c.IdClient)
-					.OnDelete(DeleteBehavior.NoAction);
-
-			entity.HasOne<Employe>().WithMany()
-					.HasForeignKey(c => c.IdEmploye)
-					.OnDelete(DeleteBehavior.NoAction);
-		});
-
-		modelBuilder.Entity<LigneCommande>(entity =>
-		{
-			entity.HasKey(e => new { e.IdCommande, e.IdProduit });
-
-			entity.Property(e => e.PU).HasColumnType("decimal(8,2)");
-			entity.Property(e => e.TauxReduc).HasDefaultValue(0);
-
-			entity.HasOne<Commande>().WithMany()
-					.HasForeignKey(l => l.IdCommande);
-
-			entity.HasOne<Produit>().WithMany()
-					.HasForeignKey(l => l.IdProduit)
-					.OnDelete(DeleteBehavior.NoAction);
-		});
-		#endregion
 	}
 }
