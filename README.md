@@ -28,5 +28,7 @@ Ajout du contrôleur et du service Commandes pour illustrer les différents type
 ### v72 - Gestion des erreurs de base de données
 Ajout de la gestion des erreurs de base de données par une méthode d'extension sur `ControllerBase`, puis par un middleware.
 
-### v73 -  Validation
-Illustration de la validation automatique par ajout d'attributs et d'une méthode de validation sur les entités `Employe` et `Adresse`.
+### v73 - Journalisation et validation
+Mise en place de la journalisation dans les contrôleurs et dans le middleware.  
+Illustration de la validation automatique par ajout d'attributs et d'une méthode de validation sur les entités `Employe` et `Adresse`.  
+Implémentation manuelle de règles de validation pour la création de commandes.

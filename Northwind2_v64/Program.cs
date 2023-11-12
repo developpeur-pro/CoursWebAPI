@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using Northwind2_v63.Data;
-using Northwind2_v63.Services;
+using Northwind2_v64.Data;
+using Northwind2_v64.Services;
 using System;
 using System.Text.Json.Serialization;
 
-namespace Northwind2_v63
+namespace Northwind2_v64
 {
 	public class Program
 	{

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Northwind2_v63.Entities;
+using Northwind2_v64.Entities;
 
-namespace Northwind2_v63.Data;
+namespace Northwind2_v64.Data;
 
 public class ContexteNorthwind : DbContext
 {

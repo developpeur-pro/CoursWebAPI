@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Northwind2_v63.Data;
+using Northwind2_v64.Data;
 
 #nullable disable
 
-namespace Northwind2_v63.Data.Migrations
+namespace Northwind2_v64.Data.Migrations
 {
     [DbContext(typeof(ContexteNorthwind))]
-    partial class ContexteNorthwindModelSnapshot : ModelSnapshot
+    [Migration("20231026180833_CreationTables")]
+    partial class CreationTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace Northwind2_v63.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Adresse", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Adresse", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -62,7 +65,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Adresses");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Affectation", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Affectation", b =>
                 {
                     b.Property<int>("IdEmploye")
                         .HasColumnType("int");
@@ -79,7 +82,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Affectations", (string)null);
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Categorie", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Categorie", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -98,7 +101,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Client", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Client", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(20)
@@ -128,7 +131,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Commande", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Commande", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,7 +177,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Commandes");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Employe", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Employe", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -229,7 +232,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Employes", (string)null);
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Fournisseur", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Fournisseur", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -264,7 +267,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Fournisseurs");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.LigneCommande", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.LigneCommande", b =>
                 {
                     b.Property<int>("IdCommande")
                         .HasColumnType("int");
@@ -290,7 +293,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("LignesCommandes");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Livreur", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Livreur", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -313,7 +316,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Livreurs");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Produit", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Produit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -355,7 +358,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Produits");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Region", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Region", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -370,7 +373,7 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Regions", (string)null);
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Territoire", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Territoire", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(20)
@@ -392,24 +395,24 @@ namespace Northwind2_v63.Data.Migrations
                     b.ToTable("Territoires", (string)null);
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Affectation", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Affectation", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Employe", null)
+                    b.HasOne("Northwind2_v64.Entities.Employe", null)
                         .WithMany()
                         .HasForeignKey("IdEmploye")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Territoire", null)
+                    b.HasOne("Northwind2_v64.Entities.Territoire", null)
                         .WithMany()
                         .HasForeignKey("IdTerritoire")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Client", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Client", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Adresse", "Adresse")
+                    b.HasOne("Northwind2_v64.Entities.Adresse", "Adresse")
                         .WithMany()
                         .HasForeignKey("IdAdresse")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -418,66 +421,66 @@ namespace Northwind2_v63.Data.Migrations
                     b.Navigation("Adresse");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Commande", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Commande", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Adresse", null)
+                    b.HasOne("Northwind2_v64.Entities.Adresse", null)
                         .WithMany()
                         .HasForeignKey("IdAdresse")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Client", null)
+                    b.HasOne("Northwind2_v64.Entities.Client", null)
                         .WithMany()
                         .HasForeignKey("IdClient")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Employe", null)
+                    b.HasOne("Northwind2_v64.Entities.Employe", null)
                         .WithMany()
                         .HasForeignKey("IdEmploye")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Livreur", null)
+                    b.HasOne("Northwind2_v64.Entities.Livreur", null)
                         .WithMany()
                         .HasForeignKey("IdLivreur")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Employe", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Employe", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Adresse", "Adresse")
+                    b.HasOne("Northwind2_v64.Entities.Adresse", "Adresse")
                         .WithOne()
-                        .HasForeignKey("Northwind2_v63.Entities.Employe", "IdAdresse")
+                        .HasForeignKey("Northwind2_v64.Entities.Employe", "IdAdresse")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Employe", null)
+                    b.HasOne("Northwind2_v64.Entities.Employe", null)
                         .WithMany()
                         .HasForeignKey("IdManager");
 
                     b.Navigation("Adresse");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Fournisseur", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Fournisseur", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Adresse", null)
+                    b.HasOne("Northwind2_v64.Entities.Adresse", null)
                         .WithMany()
                         .HasForeignKey("IdAdresse")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.LigneCommande", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.LigneCommande", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Commande", null)
+                    b.HasOne("Northwind2_v64.Entities.Commande", null)
                         .WithMany("Lignes")
                         .HasForeignKey("IdCommande")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Produit", "Produit")
+                    b.HasOne("Northwind2_v64.Entities.Produit", "Produit")
                         .WithMany()
                         .HasForeignKey("IdProduit")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -486,15 +489,15 @@ namespace Northwind2_v63.Data.Migrations
                     b.Navigation("Produit");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Produit", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Produit", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Categorie", "Catégorie")
+                    b.HasOne("Northwind2_v64.Entities.Categorie", "Catégorie")
                         .WithMany()
                         .HasForeignKey("IdCategorie")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Northwind2_v63.Entities.Fournisseur", null)
+                    b.HasOne("Northwind2_v64.Entities.Fournisseur", null)
                         .WithMany()
                         .HasForeignKey("IdFournisseur")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -503,9 +506,9 @@ namespace Northwind2_v63.Data.Migrations
                     b.Navigation("Catégorie");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Territoire", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Territoire", b =>
                 {
-                    b.HasOne("Northwind2_v63.Entities.Region", "Région")
+                    b.HasOne("Northwind2_v64.Entities.Region", "Région")
                         .WithMany("Territoires")
                         .HasForeignKey("IdRegion")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -514,12 +517,12 @@ namespace Northwind2_v63.Data.Migrations
                     b.Navigation("Région");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Commande", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Commande", b =>
                 {
                     b.Navigation("Lignes");
                 });
 
-            modelBuilder.Entity("Northwind2_v63.Entities.Region", b =>
+            modelBuilder.Entity("Northwind2_v64.Entities.Region", b =>
                 {
                     b.Navigation("Territoires");
                 });

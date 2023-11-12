@@ -55,11 +55,14 @@ namespace Northwind2_v73.Services
 			foreach (var ligne in cde.Lignes) ligne.Produit = null!;
 
 			// Contrôle les données reçues
+			ValidationRulesException vre = new();
 			if (cde.DateCommande < DateTime.Today.AddDays(-3))
-				throw new ArgumentException("La date de commande doit être > date du jour - 3 jours.");
+				vre.Errors.Add("DateCommande", new string[] { "La date de commande doit être > date du jour - 3 jours." });
 
 			if (cde.FraisLivraison < 0 || cde.FraisLivraison > 2000)
-				throw new ArgumentException("Les frais de livraison doivent être compris entre 0 et 2000 €");
+				vre.Errors.Add("Frais", new string[] { "Les frais de livraison doivent être compris entre 0 et 2000 €" });
+
+			if (vre.Errors.Any()) throw vre;
 
 			foreach (var ligne in cde.Lignes)
 				await ControlerLigneCommande(ligne);
@@ -88,12 +91,15 @@ namespace Northwind2_v73.Services
 		private async Task ControlerLigneCommande(LigneCommande ligne)
 		{
 			Produit? produit = await _contexte.Produits.FindAsync(ligne.IdProduit);
-			
-			if (produit == null || produit.Arrete)
-				throw new ArgumentException($"Le produit {ligne.IdProduit} n'existe pas ou a été arrêté.");
 
-			if (produit.UnitesEnStock < ligne.Quantite)
-				throw new ArgumentException($"La quantité en stock ({produit.UnitesEnStock}) du produit {ligne.IdProduit} est insuffisante.");
+			ValidationRulesException vre = new();
+			if (produit == null || produit.Arrete)
+				vre.Errors.Add("Produit.Arrete", new string[] { $"Le produit {ligne.IdProduit} n'existe pas ou a été arrêté." });
+
+			if (produit != null && produit.UnitesEnStock < ligne.Quantite)
+				vre.Errors.Add("Produit.UnitesEnStock", new string[] { $"La quantité en stock ({produit.UnitesEnStock}) du produit {ligne.IdProduit} est insuffisante." });
+
+			if (vre.Errors.Any()) throw vre;
 		}
 	}
 }

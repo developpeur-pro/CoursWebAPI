@@ -15,10 +15,12 @@ namespace Northwind2_v73.Controllers
 	public class EmployesController : ControllerBase
 	{
 		private readonly IServiceEmployes _serviceEmp;
+		private readonly ILogger<EmployesController> _logger;
 
-		public EmployesController(IServiceEmployes service)
+		public EmployesController(IServiceEmployes service, ILogger<EmployesController> logger)
 		{
 			_serviceEmp = service;
+			_logger = logger;
 		}
 
 		#region Requêtes GET
@@ -79,9 +81,10 @@ namespace Northwind2_v73.Controllers
 				// "location: <url d'accès à l’employé>" et un corps contenant l’employé
 				return CreatedAtAction(nameof(GetEmployé), new { id = res.Id }, res);
 			}
-			catch (DbUpdateException e)
+			catch (Exception e)
 			{
-				return this.CustomResponseForError(e);
+				//return this.CustomResponseForError(e);
+				return this.CustomResponseForError(e, emp, _logger);
 			}
 		}
 

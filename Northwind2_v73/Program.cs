@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Northwind2_v73.Data;
 using Northwind2_v73.Middlewares;
 using Northwind2_v73.Services;
+using Serilog;
 using System;
 using System.Text.Json.Serialization;
 
@@ -23,11 +24,20 @@ namespace Northwind2_v73
 			// en lui indiquant la connexion à utiliser, et désactive le suivi des modifications
 			builder.Services.AddDbContext<ContexteNorthwind>(opt => opt
 				.UseSqlServer(connect)
-				.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+				.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+				.EnableSensitiveDataLogging());
 
 			// Enregistre les services métier
 			builder.Services.AddScoped<IServiceEmployes, ServiceEmployes>();
 			builder.Services.AddScoped<IServiceCommandes, ServiceCommandes>();
+
+			// Utilise Serilog comme unique fournisseur de journalisation
+			var logger = new LoggerConfiguration()
+				 .ReadFrom.Configuration(builder.Configuration)
+				 .Enrich.FromLogContext()
+				 .CreateLogger();
+			builder.Logging.ClearProviders();
+			builder.Logging.AddSerilog(logger);
 
 			// Enregistre les contrôleurs et ajoute une option de sérialisation
 			// pour interrompre les références circulaires infinies
@@ -51,7 +61,7 @@ namespace Northwind2_v73
 			app.UseAuthorization();
 
 			// Middleware personnalisé de gestion d'erreurs
-			app.UseMiddleware<CustomErrorResponseMiddleware>();
+			//app.UseMiddleware<CustomErrorResponseMiddleware>(app.Logger);
 
 			app.MapControllers();
 

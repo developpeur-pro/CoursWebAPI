@@ -1,4 +1,4 @@
-﻿namespace Northwind2_v63.Entities
+﻿namespace Northwind2_v64.Entities
 {
 	public class Employe
 	{

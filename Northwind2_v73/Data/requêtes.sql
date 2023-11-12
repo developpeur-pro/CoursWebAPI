@@ -18,7 +18,7 @@ select * from Employes
 
 -- Suppression d'une commande et de ses lignes
 -- et réinitialisation du compteur auto-incrémenté pour les id
-declare @idCom int = 831
+declare @idCom int = 832
 delete from Commandes where id = @idCom
 select @idCom = max(Id) from Commandes
 DBCC CHECKIDENT ('Commandes', RESEED, @idCom) 

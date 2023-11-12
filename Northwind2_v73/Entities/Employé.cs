@@ -3,8 +3,7 @@
 namespace Northwind2_v73.Entities
 {
 	#region Employe et Adresse avec validation automatique
-	/*
-	public class Employe
+/*	public class Employe : IValidatableObject
 	{
 		public int Id { get; set; }
 		public Guid IdAdresse { get; set; }
@@ -60,8 +59,7 @@ namespace Northwind2_v73.Entities
 
 		[Phone(ErrorMessage = "Le N° ne doit contenir que des chiffres et éventuellement les caractères suivants : + - . ( ) et espace")]
 		public string? Tel { get; set; }
-	}
-	*/
+	}*/
 	#endregion
 
 	#region Employe et Adresse sans validation automatique

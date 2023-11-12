@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Northwind2_v63.Data;
-using Northwind2_v63.Entities;
-using Northwind2_v63.Services;
+using Northwind2_v64.Data;
+using Northwind2_v64.Entities;
+using Northwind2_v64.Services;
 using System.Data;
 
-namespace Northwind2_v63.Controllers
+namespace Northwind2_v64.Controllers
 {
 
 	[Route("api/[controller]")]

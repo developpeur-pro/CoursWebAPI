@@ -7,13 +7,15 @@ namespace Northwind2_v72.Controllers
 {
 	public static class ControllerBaseExtensions
 	{
-		// Renvoie une réponse HTTP d'erreur personnalisée à partir d'une erreur de base de données
-		public static ActionResult CustomResponseForDbError(this ControllerBase controller, DbUpdateException e)
+		// Renvoie une réponse HTTP personnalisée pour les erreurs
+		public static ActionResult CustomResponseForError(this ControllerBase controller, Exception ex)
 		{
-			(int code, string message) = e.TranslateToHttpResponse();
-			if (code == 409) return controller.Conflict(message);
-			else if (code == 400) return controller.BadRequest(message);
-			else throw e;
+			if (ex is DbUpdateException e)
+			{
+				ProblemDetails pb = e.ConvertToProblemDetails();
+				return controller.Problem(pb.Detail, null, pb.Status, pb.Title);
+			}
+			else throw ex;
 		}
 	}
 }

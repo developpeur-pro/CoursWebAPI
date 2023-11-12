@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Northwind2_v63.Data;
-using Northwind2_v63.Entities;
+using Northwind2_v64.Data;
+using Northwind2_v64.Entities;
 
-namespace Northwind2_v63.Services
+namespace Northwind2_v64.Services
 {
 	public interface IServiceEmployes
 	{

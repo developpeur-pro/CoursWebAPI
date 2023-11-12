@@ -70,19 +70,19 @@ namespace Northwind2_v72.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Employe>> PostEmployé(Employe emp)
 		{
-			try
-			{
+			//try
+			//{
 				// Enregistre l’employé dans la base et le récupère avec son Id généré automatiquement
 				Employe res = await _serviceEmp.AjouterEmployé(emp);
 
 				// Renvoie une réponse de code 201 avec l'en-tête 
 				// "location: <url d'accès à l’employé>" et un corps contenant l’employé
 				return CreatedAtAction(nameof(GetEmployé), new { id = res.Id }, res);
-			}
-			catch (DbUpdateException e)
-			{
-				return this.CustomResponseForDbError(e);
-			}
+			//}
+			//catch (Exception e)
+			//{
+			//	return this.CustomResponseForError(e);
+			//}
 		}
 
 		// POST: api/Affectations

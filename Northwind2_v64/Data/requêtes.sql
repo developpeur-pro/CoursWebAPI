@@ -22,3 +22,5 @@ select @idCom = max(Id) from Commandes
 DBCC CHECKIDENT ('Commandes', RESEED, @idCom) 
 
 select * from Commandes where id = @idCom
+
+select max(id) from Commandes

@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Northwind2_v73.Entities;
-using Northwind2_v73.Services;
+using Northwind2_v64.Entities;
+using Northwind2_v64.Services;
 
-namespace Northwind2_v73.Controllers
+namespace Northwind2_v64.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CommandesController : ControllerBase
 	{
 		private readonly IServiceCommandes _serviceCmde;
-		private readonly ILogger<EmployesController> _logger;
 
-		public CommandesController(IServiceCommandes service, ILogger<EmployesController> logger)
+		public CommandesController(IServiceCommandes service)
 		{
 			_serviceCmde = service;
-			_logger = logger;
 		}
 
 		// GET: api/Commandes
@@ -41,34 +39,21 @@ namespace Northwind2_v73.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Commande>> PostCommande(Commande cmde)
 		{
-			try
-			{
-				Commande? commande = await _serviceCmde.AjouterCommande(cmde);
+			Commande? commande = await _serviceCmde.AjouterCommande(cmde);
 
-				string uri = Url.Action(nameof(GetCommande), new { id = commande?.Id }) ?? "";
-				return Created(uri, commande);
-			}
-			catch (Exception e)
-			{
-				return this.CustomResponseForError(e);
-			}
+			string uri = Url.Action(nameof(GetCommande), new { id = commande?.Id }) ?? "";
+			return Created(uri, commande);
 		}
 
-		// POST: api/Commandes/830/Lignes
+		// POST: api/Commandes/831/Lignes
 		[HttpPost("{idCommande}/Lignes")]
 		public async Task<ActionResult<Commande>> PostLigneCommande(int idCommande, LigneCommande ligne)
 		{
-			try
-			{
-				LigneCommande? res = await _serviceCmde.AjouterLigneCommande(idCommande, ligne);
+			LigneCommande? res = await _serviceCmde.AjouterLigneCommande(idCommande, ligne);
 
-				string uri = Url.Action(nameof(GetCommande), new { Id = res?.IdCommande }) ?? "";
-				return Created(uri, res);
-			}
-			catch (Exception e)
-			{
-				return this.CustomResponseForError(e);
-			}
+			string uri = Url.Action(nameof(GetCommande), new { Id = res?.IdCommande }) ?? "";
+			return Created(uri, res);
 		}
+
 	}
 }
