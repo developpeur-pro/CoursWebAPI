@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Northwind2_v73.Entities;
-using Northwind2_v73.Services;
+using Northwind2_v91.Entities;
+using Northwind2_v91.Services;
 
-namespace Northwind2_v73.Controllers
+namespace Northwind2_v91.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
@@ -54,7 +54,38 @@ namespace Northwind2_v73.Controllers
 			}
 		}
 
-		// POST: api/Commandes/830/Lignes
+		// DELETE: api/Commandes/831
+		[HttpDelete("{idCommande}")]
+		public async Task<IActionResult> DeleteCommande(int idCommande)
+		{
+			try
+			{
+				int nbSuppr = await _serviceCmde.SupprimerCommande(idCommande);
+				if (nbSuppr == 0) return NotFound();
+				return NoContent();
+			}
+			catch (Exception e)
+			{
+				return this.CustomResponseForError(e);
+			}
+		}
+
+		// PUT: api/Commandes
+		[HttpPut]
+		public async Task<ActionResult> PutCommande(Commande cmde)
+		{
+			try
+			{
+				await _serviceCmde.ModifierCommande(cmde);
+				return NoContent();
+			}
+			catch (Exception e)
+			{
+				return this.CustomResponseForError(e);
+			}
+		}
+
+		// POST: api/Commandes/831/Lignes
 		[HttpPost("{idCommande}/Lignes")]
 		public async Task<ActionResult<LigneCommande>> PostLigneCommande(int idCommande, LigneCommande ligne)
 		{
@@ -64,6 +95,41 @@ namespace Northwind2_v73.Controllers
 
 				string uri = Url.Action(nameof(GetCommande), new { Id = res?.IdCommande }) ?? "";
 				return Created(uri, res);
+			}
+			catch (Exception e)
+			{
+				return this.CustomResponseForError(e);
+			}
+		}
+
+		// DELETE: api/Commandes/831/Lignes/77
+		[HttpDelete("{idCommande}/Lignes/{idProduit}")]
+		public async Task<IActionResult> DeleteLigneCommande(int idCommande, int idProduit)
+		{
+			try
+			{
+				await _serviceCmde.SupprimerLigneCommande(idCommande, idProduit);
+				return NoContent();
+			}
+			catch (Exception e)
+			{
+				return this.CustomResponseForError(e);
+			}
+		}
+
+		// PUT: api/Commandes/831/Lignes
+		[HttpPut("{idCommande}/Lignes")]
+		public async Task<IActionResult> PutLigneCommande(int idCommande, LigneCommande ligne)
+		{
+			try
+			{
+				//await _serviceCmde.ModifierLigneCommande(idCommande, ligne);
+				await _serviceCmde.ModifierLigneCommande2(idCommande, ligne);
+				return NoContent();
+
+				//LigneCommande res = await _serviceCmde.ModifierLigneCommande3(idCommande, ligne.IdProduit, ligne.Quantite);
+				//return Ok(res);
+
 			}
 			catch (Exception e)
 			{

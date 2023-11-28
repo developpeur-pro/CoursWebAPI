@@ -32,3 +32,7 @@ Ajout de la gestion des erreurs de base de données par une méthode d'extension
 Mise en place de la journalisation dans les contrôleurs et dans le middleware.  
 Illustration de la validation automatique par ajout d'attributs et d'une méthode de validation sur les entités `Employe` et `Adresse`.  
 Implémentation manuelle de règles de validation pour la création de commandes.
+
+### v91 - Requêtes DELETE, PUT et PATCH
+Complétion des contrôleurs existants pour gérer la suppression et la modification de données.  
+Ajout des contrôleurs Produit et Client pour illustrer  la modification.
