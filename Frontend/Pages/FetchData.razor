@@ -1,0 +1,40 @@
+﻿@page "/fetchdata"
+@using BlazorWasm.Shared
+@using System.Text.Json;
+@inject HttpClient Http
+
+@attribute [Authorize]
+
+<PageTitle>Test API</PageTitle>
+
+<h1>Test de l'API Northwind</h1>
+
+<p>Requête GET sur le point de terminaison <code>api/Regions/3</code></p>
+
+@if (reponse == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<h5>Résultat :</h5>
+	<pre>@reponse</pre>
+}
+
+@code {
+	private string? reponse;
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			reponse = await Http.GetStringAsync("/Regions/3");
+			reponse = JsonSerializer.Serialize(JsonDocument.Parse(reponse),
+							new JsonSerializerOptions { WriteIndented = true });
+		}
+		catch (HttpRequestException e)
+		{
+			reponse = e.Message;
+		}
+	}
+}
