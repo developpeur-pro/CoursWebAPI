@@ -36,3 +36,11 @@ Implémentation manuelle de règles de validation pour la création de commandes
 ### v91 - Requêtes DELETE, PUT et PATCH
 Complétion des contrôleurs existants pour gérer la suppression et la modification de données.  
 Ajout des contrôleurs Produit et Client pour illustrer  la modification.
+
+### v107 - Authentification
+Création d'un serveur d'identité avec le framework Duende IdentityServer et ASP.Net Core Identity.  
+Configuration de l'API Northwind pour exiger l'authentification des utilisateurs.  
+Création d'une appli cliente Blazor WASM utilisant le framework Backend For Frontend (BFF) de Duende.
+
+### v111 - Autorisation
+Mise en place de l'autorisation à base de revendications. C'est-à-dire qu'on autorise ou non l'accès à certaines actions de l'API selon les revendications de l'utilisateur courant.  

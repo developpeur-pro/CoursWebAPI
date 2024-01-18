@@ -35,6 +35,11 @@ builder.Services.AddIdentityServer(options =>
 			new IdentityResources.Profile(),
 	 })
 
+	 // Crée une étendue d'API "entreprise" et lui associe la revendication Fonction
+	 .AddInMemoryApiScopes(new ApiScope[] {
+			new ApiScope("entreprise", new[] { "Fonction" })
+	 })
+
 	 // Configure une appli cliente
 	 .AddInMemoryClients(new Client[] {
 			new Client
@@ -51,27 +56,27 @@ builder.Services.AddIdentityServer(options =>
             FrontChannelLogoutUri = "https://localhost:7189/signout-oidc",
 
 				// Etendues d'API autorisées
-				AllowedScopes = { "openid", "profile" },
+				AllowedScopes = { "openid", "profile", "entreprise" },
 
 				// ----------------------------------------------------------
 				// Paramétrage des jetons et de leur rafraîchissement
 
 				// Durée de validité du jeton d'identité (en secondes)
-				IdentityTokenLifetime = 30,
+				//IdentityTokenLifetime = 30,
 				// Durée de validité du jeton d'accès à l'API
-				AccessTokenLifetime = 40,
+				//AccessTokenLifetime = 40,
 
             // Autorise le client à utiliser un jeton d'actualisation
 				AllowOfflineAccess = true,
 
 				// Durée de validité maximale du jeton d'actualisation
-				AbsoluteRefreshTokenLifetime = 3600,
+				//AbsoluteRefreshTokenLifetime = 3600,
 
 				// Réinitialise la durée de validité du jeton d'actualisation
 				// à chaque actualisation du jeton d'accès
-				RefreshTokenExpiration = TokenExpiration.Sliding, 
+				//RefreshTokenExpiration = TokenExpiration.Sliding, 
 				// Durée de validité glissante du jeton d'actualisation
-				SlidingRefreshTokenLifetime = 60,
+				//SlidingRefreshTokenLifetime = 60,
 			}
 	 })
 	 // Indique d'utiliser ASP.Net Core Identity pour la gestion des profils et revendications

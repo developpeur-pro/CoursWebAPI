@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasm.Frontend", "Fron
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasm.Shared", "Shared\BlazorWasm.Shared.csproj", "{4602EFAC-A064-46A5-B852-9E19CE8F3DA0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind2_v111", "Northwind2_v111\Northwind2_v111.csproj", "{27F328E5-0713-401D-87FC-2E7CF248AC90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{4602EFAC-A064-46A5-B852-9E19CE8F3DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4602EFAC-A064-46A5-B852-9E19CE8F3DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4602EFAC-A064-46A5-B852-9E19CE8F3DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F328E5-0713-401D-87FC-2E7CF248AC90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F328E5-0713-401D-87FC-2E7CF248AC90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F328E5-0713-401D-87FC-2E7CF248AC90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F328E5-0713-401D-87FC-2E7CF248AC90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

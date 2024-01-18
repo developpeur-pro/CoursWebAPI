@@ -41,11 +41,12 @@ builder.Services.AddAuthentication(options =>
        options.Scope.Clear();
        options.Scope.Add("openid");
        options.Scope.Add("profile");
+		 options.Scope.Add("entreprise"); // Pour pouvoir récupérer les revendications associées
        options.Scope.Add("offline_access"); // pour utiliser le jeton d'actualisation
 
-       // Active la récupération des revendications sur le point de terminaison
-       // des infos utilisateur après obtention d'un jeton d'identité
-       options.MapInboundClaims = false;
+		 // Active la récupération des revendications sur le point de terminaison
+		 // des infos utilisateur après obtention d'un jeton d'identité
+		 options.MapInboundClaims = false;
        options.GetClaimsFromUserInfoEndpoint = true;
 
        // Enregistre les jetons d'accès et d'actualisation dans le cookie d'authentification
