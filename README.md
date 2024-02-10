@@ -44,3 +44,8 @@ Création d'une appli cliente Blazor WASM utilisant le framework Backend For Fro
 
 ### v111 - Autorisation
 Mise en place de l'autorisation à base de revendications. C'est-à-dire qu'on autorise ou non l'accès à certaines actions de l'API selon les revendications de l'utilisateur courant.  
+
+### v121 - Doc, tests et déploiement
+Mise en œuvre du générateur de doc NSwag et ajout de descriptions sur les actions des contrôleurs Clients et Employes .
+Ajout du projet de tests unitaires pour tester le service métier ServiceCommandes.  
+Création d'un profil de publication sur Azure.
