@@ -42,7 +42,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind2_v111", "Northwin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind2_v121", "Northwind2_v121\Northwind2_v121.csproj", "{985D50CB-EFD8-438A-9CFB-A3590946215E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNorthwind", "TestNorthwind\TestNorthwind.csproj", "{9BEC44CB-30CE-4DE4-952A-447C1C268418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestNorthwind", "TestNorthwind\TestNorthwind.csproj", "{9BEC44CB-30CE-4DE4-952A-447C1C268418}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind2_v142", "Northwind2_v142\Northwind2_v142.csproj", "{77901931-7251-4DCD-9C3D-91463E84A983}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind2_v144", "Northwind2_v144\Northwind2_v144.csproj", "{D94F298A-72DB-4E56-87BB-4E3EA5E426E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +126,14 @@ Global
 		{9BEC44CB-30CE-4DE4-952A-447C1C268418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BEC44CB-30CE-4DE4-952A-447C1C268418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BEC44CB-30CE-4DE4-952A-447C1C268418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77901931-7251-4DCD-9C3D-91463E84A983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77901931-7251-4DCD-9C3D-91463E84A983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77901931-7251-4DCD-9C3D-91463E84A983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77901931-7251-4DCD-9C3D-91463E84A983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94F298A-72DB-4E56-87BB-4E3EA5E426E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94F298A-72DB-4E56-87BB-4E3EA5E426E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94F298A-72DB-4E56-87BB-4E3EA5E426E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94F298A-72DB-4E56-87BB-4E3EA5E426E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

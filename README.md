@@ -49,3 +49,10 @@ Mise en place de l'autorisation à base de revendications. C'est-à-dire qu'on a
 Mise en œuvre du générateur de doc NSwag et ajout de descriptions sur les actions des contrôleurs Clients et Employes .
 Ajout du projet de tests unitaires pour tester le service métier ServiceCommandes.  
 Création d'un profil de publication sur Azure.
+
+### v142 - Configuration du versionnage d'API
+Configuration du versionnage dans Program en utilisant le package `Asp.Versioning.Mvc` de la .Net Foundation. 
+
+### v144 - Implémentation de 2 versions d'une API
+Implémentation de 2 versions d'un contrôleur, de ses actions et de la doc de l'API, dans une architecture avec un projet unique et un modèle EF commun aux versions.
+

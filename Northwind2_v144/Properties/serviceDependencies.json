@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:Northwind2Connect",
+      "dynamicId": null
+    }
+  }
+}
