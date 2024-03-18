@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Northwind2_v155.Tools.ErrorsDictionary">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <Members>
+      <Field Name="_dic" Hidden="true" />
+      <Method Name="IEnumerable.GetEnumerator" Hidden="true" />
+      <Method Name="IEnumerable&lt;KeyValuePair&lt;string, string[]&gt;&gt;.GetEnumerator" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAYAAAAAAAAAEAAEAAAAQAQAAAAAAQAEAAAAAAAAAAA=</HashCode>
+      <FileName>Tools\ErrorsDictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Northwind2_v155.Tools.ExceptionExtensions">
+    <Position X="4.25" Y="5.5" Width="3.5" />
+    <Members>
+      <Field Name="ForeignKeyError" Hidden="true" />
+      <Field Name="IdentityError" Hidden="true" />
+      <Field Name="MaxLengthError" Hidden="true" />
+      <Field Name="NotNullError" Hidden="true" />
+      <Field Name="NumericValueError" Hidden="true" />
+      <Field Name="PrimaryKeyError" Hidden="true" />
+      <Field Name="UniqueError" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAIAAAgAAAAAAAAAgAEABAAEAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Tools\ExceptionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Northwind2_v155.Tools.ServiceResult&lt;T&gt;">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <Members>
+      <Field Name="ID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAABAACAAAAgQAJAAAQAAAAAQAAABAAAAABAgAAAAA=</HashCode>
+      <FileName>Tools\ServiceResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Northwind2_v155.Tools.ServiceResultExtensions">
+    <Position X="4.25" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tools\ServiceResultExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Northwind2_v155.Tools.ServiceBase">
+    <Position X="0.5" Y="4.75" Width="3" />
+    <Members>
+      <Field Name="_dbContext" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABIAAAAAAAAAEAAAAAAAAQAwAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Tools\ServiceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Northwind2_v155.Tools.ResultKinds">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAEAAAAAAAAAAAAAAAIAAAAAAAAQACAABAAAAAAA=</HashCode>
+      <FileName>Tools\ServiceResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

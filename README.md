@@ -56,3 +56,14 @@ Configuration du versionnage dans Program en utilisant le package `Asp.Versionin
 ### v144 - Implémentation de 2 versions d'une API
 Implémentation de 2 versions d'un contrôleur, de ses actions et de la doc de l'API, dans une architecture avec un projet unique et un modèle EF commun aux versions.
 
+### v151 - Accès concurrentiels
+Dans les entités Produit et LigneCommande, ajout d'un champ `Version`, qui représente un jeton d'accès concurrentiels.  
+Affectation automatique de sa valeur par SQL Server dans la table `LignesCommandes`.  
+Affectation de sa valeur par le code dans les méthodes d'ajout et modification de produits.
+
+### v155 - Architecture à base de ServiceResult
+Utilisation d'une classe `ServiceResult` pour représenter les résultats des méthodes de services métier, qu'ils contiennent des données ou des erreurs.  
+Gestion des erreurs de validation sans passer par des exceptions.  
+Dans la couche de servives métier, interception des exceptions émises par EF, et transformation en `ServiceResult`.  
+Dans la couche de contrôleurs, transformation des `ServiceResult` en `ObjectResult`.  
+Ajout du projet de tests unitaires TestNorthwindWithServiceResult pour tester le projet Northwind2 dans sa nouvelle architecture.
